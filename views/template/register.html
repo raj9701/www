@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>list app</title>  
+</head>
+<body>
+{{first}}
+  <h1>Register Form</h1>
+  {{msg}}
+  <div class="alert alert-success" ng-if="success_msg">        
+         {{success_msg}}
+    </div>
+    <form class="form-horizontal" name="regform">
+
+    <div class="form-group" ng-class="{ 'has-error' : regform.email.$invalid && regform.email.$touched }">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="email" ng-model="reguser.email" placeholder="Enter email" required>
+        <span class="help-block" ng-show="regform.email.$touched && regform.email.$invalid">The name is required.</span>        
+      </div>            
+    </div>
+    <div class="form-group" ng-class=" {'has-error' : regform.username.$invalid && !regform.username.$pristine && regform.username.$touched }">
+      <label class="control-label col-sm-2" for="Username">Username:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="username" ng-model="reguser.username" id="username" placeholder="Enter Username" ng-minlength="3" ng-maxlength="8" required>
+        <span style="color:#A52A2A;" ng-show="regform.username.$touched && regform.username.$invalid">The Username is Required </span>
+         <span class="help-block" ng-show="regform.username.$error.minlength">Username is too short.</span>
+         <span class="help-block" ng-show="regform.username.$error.maxlength">Username is too long.</span>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : regform.password.$invalid && regform.password.$touched }">
+      <label class="control-label col-sm-2" for="password">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" name="password" ng-model="reguser.password" id="pwd" placeholder="Enter password" required>
+        <span class="help-block" ng-show="regform.password.$touched && regform.password.$invalid">The Password is required.</span>
+      </div>
+    </div> 
+    <div class="form-group" ng-class="{ 'has-error' : regform.cpassword.$invalid && regform.cpassword.$touched }">
+      <label class="control-label col-sm-2" for="password">Confirm Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" name="cpassword" ng-model="cpassword" id="pwd" placeholder="Enter password" required>
+         <span class="help-block" ng-show="regform.cpassword.$touched && regform.cpassword.$invalid">The Confirm Password is required</span>
+         <span style="color:#A52A2A;" class="help-block" ng-show="reguser.password!==cpassword">Passwords do not match.</span>
+      </div>
+    </div>   
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button name=""  ng-disabled="regform.$invalid || reguser.password!==cpassword" ng-click="register()" class="btn btn-success">Register</button><br>
+        Already Have An Account?<a href="#/login">Login</a>
+      </div>
+    </div>
+  </form>
+
+</body>
+</html>

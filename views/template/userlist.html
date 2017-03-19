@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Userlist</title>
+</head>
+<body>
+  <h1>User Listing</h1>
+  {{Userlist}}
+  <div class="container">
+     <table class="table">
+ 	<thead>
+ 	  <tr>
+ 	    <th>Name</th>
+ 	    <th>Email</th>
+ 	    <th>Number</th> 
+ 	    <th>Action</th>	    
+ 	    <th>&nbsp;</th>	 
+ 	  </tr>
+ 	</thead>
+ 	<tbody>
+ 	   <tr> 	   	   
+ 	   	<td><input type="text" class="form-control" ng-model="contact.name" placeholder="Enter Fullname" required /></td>
+ 	   	<td><input type="text" class="form-control" ng-model="contact.email" placeholder="Enter Email" required /></td>
+ 	   	<td><input type="text" class="form-control" ng-model="contact.number" placeholder="Enter Phone Number" required /></td>
+ 	   	<td><button class="btn btn-primary"  ng-click="addcontact()">Add Contact</button></td>
+ 	   	<td><button class="btn btn-info" ng-click="update()">Update</button></td>
+      
+ 	   </tr>
+ 		<tr ng-repeat="contacts in contactlist">
+ 			<td>{{contacts.name}}</td>
+ 			<td>{{contacts.email}}</td>
+ 			<td>{{contacts.number}}</td>
+ 			<td><button class="btn btn-danger" ng-click="remove(contacts._id)">Remove</button></td>
+ 			<td><button class="btn btn-warning" ng-click="edit(contacts._id)">Edit</button></td>
+ 		</tr>
+ 	</tbody>
+ </table>
+  </div>
+</body>
+</html>
